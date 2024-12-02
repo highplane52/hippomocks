@@ -123,6 +123,10 @@ class X{};
 #endif
 #endif
 
+#if !defined(_MSC_VER) && __cplusplus >= 201103L
+#define _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+#endif
+
 #include <cstdio>
 #include <list>
 #include <map>
@@ -598,7 +602,11 @@ void in_assign(T1 a, T2 b)
 template <typename A = NullType, typename B = NullType, typename C = NullType, typename D = NullType,
 		  typename E = NullType, typename F = NullType, typename G = NullType, typename H = NullType,
 		  typename I = NullType, typename J = NullType, typename K = NullType, typename L = NullType,
-		  typename M = NullType, typename N = NullType, typename O = NullType, typename P = NullType>
+		  typename M = NullType, typename N = NullType, typename O = NullType, typename P = NullType,
+		  typename Q = NullType, typename R = NullType, typename S = NullType, typename U = NullType,
+		  typename V = NullType, typename W = NullType, typename SA = NullType, typename SB = NullType,
+		  typename SC = NullType, typename SD = NullType, typename SE = NullType, typename SF = NullType,
+		  typename SG = NullType, typename SH = NullType, typename SI = NullType, typename SJ = NullType>
 class ref_tuple : public base_tuple
 {
 public:
@@ -618,8 +626,24 @@ public:
 	N n;
 	O o;
 	P p;
-	ref_tuple(A valueA = A(), B valueB = B(), C valueC = C(), D valueD = D(), E valueE = E(), F valueF = F(), G valueG = G(), H valueH = H(), I valueI = I(), J valueJ = J(), K valueK = K(), L valueL = L(), M valueM = M(), N valueN = N(), O valueO = O(), P valueP = P())
-		  : a(valueA), b(valueB), c(valueC), d(valueD), e(valueE), f(valueF), g(valueG), h(valueH), i(valueI), j(valueJ), k(valueK), l(valueL), m(valueM), n(valueN), o(valueO), p(valueP)
+	Q q;
+	R r;
+	S s;
+	U u;
+	V v;
+	W w;
+	SA sa;
+	SB sb;
+	SC sc;
+	SD sd;
+	SE se;
+	SF sf;
+	SG sg;
+	SH sh;
+	SI si;
+	SJ sj;
+	ref_tuple(A valueA = A(), B valueB = B(), C valueC = C(), D valueD = D(), E valueE = E(), F valueF = F(), G valueG = G(), H valueH = H(), I valueI = I(), J valueJ = J(), K valueK = K(), L valueL = L(), M valueM = M(), N valueN = N(), O valueO = O(), P valueP = P(), Q valueQ = Q(), R valueR = R(), S valueS = S(), U valueU = U(), V valueV = V(), W valueW = W(), SA valueSA = SA(), SB valueSB = SB(), SC valueSC = SC(), SD valueSD = SD(), SE valueSE = SE(), SF valueSF = SF(), SG valueSG = SG(), SH valueSH = SH(), SI valueSI = SI(), SJ valueSJ = SJ())
+		  : a(valueA), b(valueB), c(valueC), d(valueD), e(valueE), f(valueF), g(valueG), h(valueH), i(valueI), j(valueJ), k(valueK), l(valueL), m(valueM), n(valueN), o(valueO), p(valueP), q(valueQ), r(valueR), s(valueS), u(valueU), v(valueV), w(valueW), sa(valueSA), sb(valueSB), sc(valueSC), sd(valueSD), se(valueSE), sf(valueSF), sg(valueSG), sh(valueSH), si(valueSI), sj(valueSJ)
 	{}
 	virtual void printTo(std::ostream &os) const
 	{
@@ -640,6 +664,22 @@ public:
 	  printArg<N>::print(os, n, true);
 	  printArg<O>::print(os, o, true);
 	  printArg<P>::print(os, p, true);
+	  printArg<Q>::print(os, q, true);
+	  printArg<R>::print(os, r, true);
+	  printArg<S>::print(os, s, true);
+	  printArg<U>::print(os, u, true);
+	  printArg<V>::print(os, v, true);
+	  printArg<W>::print(os, w, true);
+	  printArg<SA>::print(os, sa, true);
+	  printArg<SB>::print(os, sb, true);
+	  printArg<SC>::print(os, sc, true);
+	  printArg<SD>::print(os, sd, true);
+	  printArg<SE>::print(os, se, true);
+	  printArg<SF>::print(os, sf, true);
+	  printArg<SG>::print(os, sg, true);
+	  printArg<SH>::print(os, sh, true);
+	  printArg<SI>::print(os, si, true);
+	  printArg<SJ>::print(os, sj, true);
 	  os << ")";
 	}
 };
@@ -647,13 +687,17 @@ public:
 template <typename A = NullType, typename B = NullType, typename C = NullType, typename D = NullType,
 		  typename E = NullType, typename F = NullType, typename G = NullType, typename H = NullType,
 		  typename I = NullType, typename J = NullType, typename K = NullType, typename L = NullType,
-		  typename M = NullType, typename N = NullType, typename O = NullType, typename P = NullType>
+		  typename M = NullType, typename N = NullType, typename O = NullType, typename P = NullType,
+		  typename Q = NullType, typename R = NullType, typename S = NullType, typename U = NullType,
+		  typename V = NullType, typename W = NullType, typename SA = NullType, typename SB = NullType,
+		  typename SC = NullType, typename SD = NullType, typename SE = NullType, typename SF = NullType,
+		  typename SG = NullType, typename SH = NullType, typename SI = NullType, typename SJ = NullType>
 class ref_comparable_assignable_tuple : public base_tuple
 {
 public:
-	virtual bool operator==(const ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &bo) = 0;
-	virtual void assign_from(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &from) = 0;
-  virtual void assign_to(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &to) = 0;
+	virtual bool operator==(const ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ> &bo) = 0;
+	virtual void assign_from(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ> &from) = 0;
+	virtual void assign_to(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ> &to) = 0;
 };
 
 template <typename T> struct no_array { typedef T type; };
@@ -673,9 +717,13 @@ struct store_as<B&>
 
 template <typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H,
 		  typename I, typename J, typename K, typename L, typename M, typename N, typename O, typename P,
+		  typename Q, typename R, typename S, typename U, typename V, typename W, typename SA, typename SB,
+		  typename SC, typename SD, typename SE, typename SF, typename SG, typename SH, typename SI, typename SJ, 
 		  typename CA, typename CB, typename CC, typename CD, typename CE, typename CF, typename CG, typename CH,
-		  typename CI, typename CJ, typename CK, typename CL, typename CM, typename CN, typename CO, typename CP>
-class copy_tuple : public ref_comparable_assignable_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P>
+		  typename CI, typename CJ, typename CK, typename CL, typename CM, typename CN, typename CO, typename CP,
+		  typename CQ, typename CR, typename CS, typename CU, typename CV, typename CW, typename CSA, typename CSB,
+		  typename CSC, typename CSD, typename CSE, typename CSF, typename CSG, typename CSH, typename CSI, typename CSJ>
+class copy_tuple : public ref_comparable_assignable_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ>
 {
 public:
 	typename store_as<CA>::type a;
@@ -694,6 +742,22 @@ public:
 	typename store_as<CN>::type n;
 	typename store_as<CO>::type o;
 	typename store_as<CP>::type p;
+	typename store_as<CQ>::type q;
+	typename store_as<CR>::type r;
+	typename store_as<CS>::type s;
+	typename store_as<CU>::type u;
+	typename store_as<CV>::type v;
+	typename store_as<CW>::type w;
+	typename store_as<CSA>::type sa;
+	typename store_as<CSB>::type sb;
+	typename store_as<CSC>::type sc;
+	typename store_as<CSD>::type sd;
+	typename store_as<CSE>::type se;
+	typename store_as<CSF>::type sf;
+	typename store_as<CSG>::type sg;
+	typename store_as<CSH>::type sh;
+	typename store_as<CSI>::type si;
+	typename store_as<CSJ>::type sj;
 	copy_tuple(typename store_as<CA>::type valueA, typename store_as<CB>::type valueB,
 		typename store_as<CC>::type valueC, typename store_as<CD>::type valueD,
 		typename store_as<CE>::type valueE, typename store_as<CF>::type valueF,
@@ -701,10 +765,18 @@ public:
 		typename store_as<CI>::type valueI, typename store_as<CJ>::type valueJ,
 		typename store_as<CK>::type valueK, typename store_as<CL>::type valueL,
 		typename store_as<CM>::type valueM, typename store_as<CN>::type valueN,
-		typename store_as<CO>::type valueO, typename store_as<CP>::type valueP)
-		  : a(valueA), b(valueB), c(valueC), d(valueD), e(valueE), f(valueF), g(valueG), h(valueH), i(valueI), j(valueJ), k(valueK), l(valueL), m(valueM), n(valueN), o(valueO), p(valueP)
+		typename store_as<CO>::type valueO, typename store_as<CP>::type valueP,
+		typename store_as<CQ>::type valueQ, typename store_as<CR>::type valueR,
+		typename store_as<CS>::type valueS, typename store_as<CU>::type valueU,
+		typename store_as<CV>::type valueV, typename store_as<CW>::type valueW,
+		typename store_as<CSA>::type valueSA, typename store_as<CSB>::type valueSB,
+		typename store_as<CSC>::type valueSC, typename store_as<CSD>::type valueSD,
+		typename store_as<CSE>::type valueSE, typename store_as<CSF>::type valueSF,
+		typename store_as<CSG>::type valueSG, typename store_as<CSH>::type valueSH,
+		typename store_as<CSI>::type valueSI, typename store_as<CSJ>::type valueSJ)
+		  : a(valueA), b(valueB), c(valueC), d(valueD), e(valueE), f(valueF), g(valueG), h(valueH), i(valueI), j(valueJ), k(valueK), l(valueL), m(valueM), n(valueN), o(valueO), p(valueP), q(valueQ), r(valueR), s(valueS), u(valueU), v(valueV), w(valueW), sa(valueSA), sb(valueSB), sc(valueSC), sd(valueSD), se(valueSE), sf(valueSF), sg(valueSG), sh(valueSH), si(valueSI), sj(valueSJ)
 	{}
-	bool operator==(const ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &to)
+	bool operator==(const ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ> &to)
 	{
 		return (comparer<A>::compare(a, to.a) &&
 				comparer<B>::compare(b, to.b) &&
@@ -721,9 +793,25 @@ public:
 				comparer<M>::compare(m, to.m) &&
 				comparer<N>::compare(n, to.n) &&
 				comparer<O>::compare(o, to.o) &&
-				comparer<P>::compare(p, to.p));
+				comparer<P>::compare(p, to.p) &&
+				comparer<Q>::compare(q, to.q) &&
+				comparer<R>::compare(r, to.r) &&
+				comparer<S>::compare(s, to.s) &&
+				comparer<U>::compare(u, to.u) &&
+				comparer<V>::compare(v, to.v) &&
+				comparer<W>::compare(w, to.w) &&
+				comparer<SA>::compare(sa, to.sa) &&
+				comparer<SB>::compare(sb, to.sb) &&
+				comparer<SC>::compare(sc, to.sc) &&
+				comparer<SD>::compare(sd, to.sd) &&
+				comparer<SE>::compare(se, to.se) &&
+				comparer<SF>::compare(sf, to.sf) &&
+				comparer<SG>::compare(sg, to.sg) &&
+				comparer<SH>::compare(sh, to.sh) &&
+				comparer<SI>::compare(si, to.si) &&
+				comparer<SJ>::compare(sj, to.sj));
 	}
-	void assign_from(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &from)
+	void assign_from(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ> &from)
 	{
 		in_assign< typename store_as<CA>::type, A>(a, from.a);
 		in_assign< typename store_as<CB>::type, B>(b, from.b);
@@ -741,8 +829,24 @@ public:
 		in_assign< typename store_as<CN>::type, N>(n, from.n);
 		in_assign< typename store_as<CO>::type, O>(o, from.o);
 		in_assign< typename store_as<CP>::type, P>(p, from.p);
+		in_assign< typename store_as<CQ>::type, Q>(q, from.q);
+		in_assign< typename store_as<CR>::type, R>(r, from.r);
+		in_assign< typename store_as<CS>::type, S>(s, from.s);
+		in_assign< typename store_as<CU>::type, U>(u, from.u);
+		in_assign< typename store_as<CV>::type, V>(v, from.v);
+		in_assign< typename store_as<CW>::type, W>(w, from.w);
+		in_assign< typename store_as<CSA>::type, SA>(sa, from.sa);
+		in_assign< typename store_as<CSB>::type, SB>(sb, from.sb);
+		in_assign< typename store_as<CSC>::type, SC>(sc, from.sc);
+		in_assign< typename store_as<CSD>::type, SD>(sd, from.sd);
+		in_assign< typename store_as<CSE>::type, SE>(se, from.se);
+		in_assign< typename store_as<CSF>::type, SF>(sf, from.sf);
+		in_assign< typename store_as<CSG>::type, SG>(sg, from.sg);
+		in_assign< typename store_as<CSH>::type, SH>(sh, from.sh);
+		in_assign< typename store_as<CSI>::type, SI>(si, from.si);
+		in_assign< typename store_as<CSJ>::type, SJ>(sj, from.sj);
 	}
-	void assign_to(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &to)
+	void assign_to(ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,U,V,W,SA,SB,SC,SD,SE,SF,SG,SH,SI,SJ> &to)
 	{
 		out_assign< typename store_as<CA>::type, A>(a, to.a);
 		out_assign< typename store_as<CB>::type, B>(b, to.b);
@@ -760,6 +864,22 @@ public:
 		out_assign< typename store_as<CN>::type, N>(n, to.n);
 		out_assign< typename store_as<CO>::type, O>(o, to.o);
 		out_assign< typename store_as<CP>::type, P>(p, to.p);
+		out_assign< typename store_as<CQ>::type, Q>(q, to.q);
+		out_assign< typename store_as<CR>::type, R>(r, to.r);
+		out_assign< typename store_as<CS>::type, S>(s, to.s);
+		out_assign< typename store_as<CU>::type, U>(u, to.u);
+		out_assign< typename store_as<CV>::type, V>(v, to.v);
+		out_assign< typename store_as<CW>::type, W>(w, to.w);
+		out_assign< typename store_as<CSA>::type, SA>(sa, to.sa);
+		out_assign< typename store_as<CSB>::type, SB>(sb, to.sb);
+		out_assign< typename store_as<CSC>::type, SC>(sc, to.sc);
+		out_assign< typename store_as<CSD>::type, SD>(sd, to.sd);
+		out_assign< typename store_as<CSE>::type, SE>(se, to.se);
+		out_assign< typename store_as<CSF>::type, SF>(sf, to.sf);
+		out_assign< typename store_as<CSG>::type, SG>(sg, to.sg);
+		out_assign< typename store_as<CSH>::type, SH>(sh, to.sh);
+		out_assign< typename store_as<CSI>::type, SI>(si, to.si);
+		out_assign< typename store_as<CSJ>::type, SJ>(sj, to.sj);
 	}
 	virtual void printTo(std::ostream &os) const
 	{
@@ -780,6 +900,22 @@ public:
 		printArg<typename store_as<CN>::type>::print(os, n, true);
 		printArg<typename store_as<CO>::type>::print(os, o, true);
 		printArg<typename store_as<CP>::type>::print(os, p, true);
+		printArg<typename store_as<CQ>::type>::print(os, q, true);
+		printArg<typename store_as<CR>::type>::print(os, r, true);
+		printArg<typename store_as<CS>::type>::print(os, s, true);
+		printArg<typename store_as<CU>::type>::print(os, u, true);
+		printArg<typename store_as<CV>::type>::print(os, v, true);
+		printArg<typename store_as<CW>::type>::print(os, w, true);
+		printArg<typename store_as<CSA>::type>::print(os, sa, true);
+		printArg<typename store_as<CSB>::type>::print(os, sb, true);
+		printArg<typename store_as<CSC>::type>::print(os, sc, true);
+		printArg<typename store_as<CSD>::type>::print(os, sd, true);
+		printArg<typename store_as<CSE>::type>::print(os, se, true);
+		printArg<typename store_as<CSF>::type>::print(os, sf, true);
+		printArg<typename store_as<CSG>::type>::print(os, sg, true);
+		printArg<typename store_as<CSH>::type>::print(os, sh, true);
+		printArg<typename store_as<CSI>::type>::print(os, si, true);
+		printArg<typename store_as<CSJ>::type>::print(os, sj, true);
 		os << ")";
 	}
 };
@@ -831,10 +967,11 @@ public:
 
 class NotImplementedException : public BaseException {
 public:
-	NotImplementedException(MockRepository *repo)
+	NotImplementedException(MockRepository *repo, const char *cause = nullptr)
 	{
 		std::stringstream text;
 		text << "Function called without expectation!" << std::endl;
+        if (cause) text << cause << std::endl;
 		text << *repo;
 
 #ifdef LINUX_TARGET
@@ -1459,6 +1596,61 @@ public:
 	virtual Y operator()(const base_tuple &tupl) = 0;
 };
 
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+template <typename Y, typename... Args>
+class Invocable : public TupleInvocable<Y>
+{
+public:
+	virtual Y operator()(Args... args) = 0;
+	virtual Y operator()(const base_tuple &tupl) {
+		const ref_tuple<Args...> &rTupl = reinterpret_cast<const ref_tuple<Args...> &>(tupl);
+        if constexpr (sizeof...(Args) == 0) return (*this)();
+        else if constexpr (sizeof...(Args) == 1) return (*this)(rTupl.a);
+        else if constexpr (sizeof...(Args) == 2) return (*this)(rTupl.a, rTupl.b);
+        else if constexpr (sizeof...(Args) == 3) return (*this)(rTupl.a, rTupl.b, rTupl.c);
+        else if constexpr (sizeof...(Args) == 4) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d);
+        else if constexpr (sizeof...(Args) == 5) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e);
+        else if constexpr (sizeof...(Args) == 6) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f);
+        else if constexpr (sizeof...(Args) == 7) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g);
+        else if constexpr (sizeof...(Args) == 8) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h);
+        else if constexpr (sizeof...(Args) == 9) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i);
+        else if constexpr (sizeof...(Args) == 10) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j);
+        else if constexpr (sizeof...(Args) == 11) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k);
+        else if constexpr (sizeof...(Args) == 12) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l);
+        else if constexpr (sizeof...(Args) == 13) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m);
+        else if constexpr (sizeof...(Args) == 14) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n);
+        else if constexpr (sizeof...(Args) == 15) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o);
+        else if constexpr (sizeof...(Args) == 16) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p);
+        else if constexpr (sizeof...(Args) == 17) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q);
+        else if constexpr (sizeof...(Args) == 18) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r);
+        else if constexpr (sizeof...(Args) == 19) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s);
+        else if constexpr (sizeof...(Args) == 20) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u);
+        else if constexpr (sizeof...(Args) == 21) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v);
+        else if constexpr (sizeof...(Args) == 22) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w);
+        else if constexpr (sizeof...(Args) == 23) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa);
+        else if constexpr (sizeof...(Args) == 24) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb);
+        else if constexpr (sizeof...(Args) == 25) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc);
+        else if constexpr (sizeof...(Args) == 26) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd);
+        else if constexpr (sizeof...(Args) == 27) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd, rTupl.se);
+        else if constexpr (sizeof...(Args) == 28) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd, rTupl.se, rTupl.sf);
+        else if constexpr (sizeof...(Args) == 29) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd, rTupl.se, rTupl.sf, rTupl.sg);
+        else if constexpr (sizeof...(Args) == 30) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd, rTupl.se, rTupl.sf, rTupl.sg, rTupl.sh);
+        else if constexpr (sizeof...(Args) == 31) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd, rTupl.se, rTupl.sf, rTupl.sg, rTupl.sh, rTupl.si);
+        else if constexpr (sizeof...(Args) == 32) return (*this)(rTupl.a, rTupl.b, rTupl.c, rTupl.d, rTupl.e, rTupl.f, rTupl.g, rTupl.h, rTupl.i, rTupl.j, rTupl.k, rTupl.l, rTupl.m, rTupl.n, rTupl.o, rTupl.p, rTupl.q, rTupl.r, rTupl.s, rTupl.u, rTupl.v, rTupl.w, rTupl.sa, rTupl.sb, rTupl.sc, rTupl.sd, rTupl.se, rTupl.sf, rTupl.sg, rTupl.sh, rTupl.si, rTupl.sj);
+    }
+};
+template <typename T, typename Y, typename... Args>
+class DoWrapper : public Invocable<Y, Args...> {
+	T t;
+public:
+	DoWrapper(T templ) : t(templ) {}
+	virtual Y operator()(Args... args)
+	{
+		return t(args...);
+	}
+	using Invocable<Y,Args...>::operator();
+};
+#else
 template <typename Y,
 		  typename A = NullType, typename B = NullType, typename C = NullType, typename D = NullType,
 		  typename E = NullType, typename F = NullType, typename G = NullType, typename H = NullType,
@@ -1699,6 +1891,7 @@ public:
 	}
 	using Invocable<Y>::operator();
 };
+#endif
 
 class ReturnValueHolder {
 public:
@@ -1780,6 +1973,734 @@ public:
 
 std::ostream &operator<<(std::ostream &os, const Call &call);
 
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+template <typename Y, typename... Args>
+class TCall : public Call {
+private:
+	ref_comparable_assignable_tuple<Args...> *args;
+public:
+	const base_tuple *getArgs() const { return args; }
+	TCall(RegistrationType expect, base_mock *baseMock, std::pair<int, int> index, int X, const char *func, const char *file) : Call(expect, baseMock, index, X, func ,file), args(0) {}
+	~TCall() { delete args; }
+	bool matchesArgs(const base_tuple &tupl) {
+		return (!args && !matchFunctor) ||
+			(args && (*args == reinterpret_cast<const ref_tuple<Args...> &>(tupl))) ||
+			(matchFunctor && (*(TupleInvocable<bool> *)(matchFunctor))(tupl));
+	}
+	void assignArgs(base_tuple &tupl) {
+		if(args) {
+			args->assign_to(static_cast<ref_tuple<Args...> &>(tupl));
+			args->assign_from(static_cast<ref_tuple<Args...> &>(tupl));
+		}
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG, typename CSH, typename CSI, typename CSJ>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg, const CSH & sh, const CSI & si, const CSJ & sj) {
+		args = new copy_tuple<Args...,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,const CSH &,const CSI &,const CSJ &>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,sh,si,sj);
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG, typename CSH, typename CSI>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg, const CSH & sh, const CSI & si) {
+		args = new copy_tuple<Args...,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,const CSH &,const CSI &,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,sh,si,NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG, typename CSH>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg, const CSH & sh) {
+		args = new copy_tuple<Args...,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,const CSH &,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,sh,NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC>
+	TCall<Y,Args...> &With(const CA & a, const CB & b, const CC & c) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB>
+	TCall<Y,Args...> &With(const CA & a, const CB & b) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA>
+	TCall<Y,Args...> &With(const CA & a) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	TCall<Y, Args...> &After(Call &call) {
+		previousCalls.push_back(&call);
+		return *this;
+	}
+	template <typename T>
+	TCall<Y,Args...> &Do(T function) { functor = new DoWrapper<T,Y,Args...>(function); return *this; }
+	template <typename T>
+	TCall<Y,Args...> &Match(T function) { matchFunctor = new DoWrapper<T,bool,Args...>(function); return *this; }
+	Call &Return(Y obj) { retVal = new ReturnValueWrapperCopy<Y>(obj); return *this; }
+	Call &ReturnByRef(Y obj) { retVal = new ReturnValueWrapperRef<Y>(obj); return *this; }
+#ifndef HM_NO_EXCEPTIONS
+	template <typename Ex>
+	Call &Throw(Ex exception) { eHolder = new ExceptionWrapper<Ex>(exception); return *this; }
+#endif
+};
+template <typename... Args>
+class TCall<void, Args...> : public Call {
+private:
+	ref_comparable_assignable_tuple<Args...> *args;
+public:
+	const base_tuple *getArgs() const { return args; }
+	TCall(RegistrationType expect, base_mock *baseMock, std::pair<int, int> index, int X, const char *func, const char *file) : Call(expect, baseMock, index, X, func ,file), args(0) {}
+	~TCall() { delete args; }
+	bool matchesArgs(const base_tuple &tupl) {
+		return (!args && !matchFunctor) ||
+			(args && (*args == reinterpret_cast<const ref_tuple<Args...> &>(tupl))) ||
+			(matchFunctor && (*(TupleInvocable<bool> *)(matchFunctor))(tupl));
+	}
+	void assignArgs(base_tuple &tupl) {
+		if(args) {
+			args->assign_to(static_cast<ref_tuple<Args...> &>(tupl));
+			args->assign_from(static_cast<ref_tuple<Args...> &>(tupl));
+		}
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG, typename CSH, typename CSI, typename CSJ>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg, const CSH & sh, const CSI & si, const CSJ & sj) {
+		args = new copy_tuple<Args...,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,const CSH &,const CSI &,const CSJ &>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,sh,si,sj);
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG, typename CSH, typename CSI>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg, const CSH & sh, const CSI & si) {
+		args = new copy_tuple<Args...,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,const CSH &,const CSI &,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,sh,si,NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG, typename CSH>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg, const CSH & sh) {
+		args = new copy_tuple<Args...,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,const CSH &,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,sh,NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF,
+			  typename CSG>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf, const CSG & sg) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,const CSG &,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,sg,NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE, typename CSF>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se, const CSF & sf) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,const CSF &,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,sf,NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD, typename CSE>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd, const CSE & se) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,const CSE &,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,se,NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC, typename CSD>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc, const CSD & sd) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,const CSD &,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,sd,NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB,
+			  typename CSC>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb, const CSC & sc) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,const CSC &,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,sc,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA, typename CSB>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa, const CSB & sb) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,const CSB &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,sb,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW, typename CSA>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w, const CSA & sa) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,const CSA &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,sa,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV, typename CW>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v, const CW & w) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,const CW &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU,
+			  typename CV>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u, const CV & v) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,const CV &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS, typename CU>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s, const CU & u) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,const CU &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR, typename CS>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r, const CS & s) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,const CS &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ, typename CR>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q, const CR & r) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,const CR &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP,
+			  typename CQ>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p, const CQ & q) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,const CQ &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO, typename CP>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o, const CP & p) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,const CP &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN, typename CO>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n, const CO & o) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,const CO &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM, typename CN>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m, const CN & n) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,const CN &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL,
+			  typename CM>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l, const CM & m) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,const CM &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,m,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK, typename CL>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k, const CL & l) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,const CL &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,l,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ, typename CK>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j, const CK & k) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,const CK &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,k,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI, typename CJ>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i, const CJ & j) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,const CJ &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,j,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH,
+			  typename CI>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h, const CI & i) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,const CI &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,i,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG, typename CH>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g, const CH & h) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,const CH &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,h,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF, typename CG>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f, const CG & g) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,const CG &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,g,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE, typename CF>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e, const CF & f) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,const CF &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,f,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD,
+			  typename CE>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d, const CE & e) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,const CE &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,e,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC, typename CD>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c, const CD & d) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,const CD &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,d,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB, typename CC>
+	TCall<void,Args...> &With(const CA & a, const CB & b, const CC & c) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,const CC &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,c,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA, typename CB>
+	TCall<void,Args...> &With(const CA & a, const CB & b) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,const CB &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,b,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	template <typename CA>
+	TCall<void,Args...> &With(const CA & a) {
+		args = new copy_tuple<Args...,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								const CA &,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>(a,NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+		return *this;
+	}
+	TCall<void,Args...> &After(Call &call) {
+		previousCalls.push_back(&call);
+		return *this;
+	}
+	template <typename T>
+	TCall<void,Args...> &Do(T function) { functor = new DoWrapper<T,void,Args...>(function); return *this; }
+	template <typename T>
+	TCall<void,Args...> &Match(T function) { matchFunctor = new DoWrapper<T,bool,Args...>(function); return *this; }
+#ifndef HM_NO_EXCEPTIONS
+	template <typename Ex>
+	Call &Throw(Ex exception) { eHolder = new ExceptionWrapper<Ex>(exception); return *this; }
+#endif
+};
+template <typename Y>
+class TCall<Y> : public Call {
+private:
+	ref_comparable_assignable_tuple<> *args;
+public:
+		const base_tuple *getArgs() const { return args; }
+	TCall(RegistrationType expect, base_mock *baseMock, std::pair<int, int> index, int X, const char *func, const char *file) : Call(expect, baseMock, index, X, func ,file) {
+		args = new copy_tuple<NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>
+								(NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+	}
+	~TCall() { delete args; }
+	bool matchesArgs(const base_tuple &) { return true; }
+	void assignArgs(base_tuple &) {}
+	TCall<Y> &After(Call &call) {
+		previousCalls.push_back(&call);
+		return *this;
+	}
+	template <typename T>
+	TCall<Y> &Do(T function) { functor = new DoWrapper<T,Y>(function); return *this; }
+	Call &Return(Y obj) { retVal = new ReturnValueWrapperCopy<Y>(obj); return *this; }
+	Call &ReturnByRef(Y obj) { retVal = new ReturnValueWrapperRef<Y>(obj); return *this; }
+#ifndef HM_NO_EXCEPTIONS
+	template <typename Ex>
+	Call &Throw(Ex exception) { eHolder = new ExceptionWrapper<Ex>(exception); return *this; }
+#endif
+};
+template <>
+class TCall<void> : public Call {
+private:
+	ref_comparable_assignable_tuple<> *args;
+public:
+		const base_tuple *getArgs() const { return args; }
+	TCall(RegistrationType expect, base_mock *baseMock, std::pair<int, int> index, int X, const char *func, const char *file) : Call(expect, baseMock, index, X, func ,file) {
+		args = new copy_tuple<NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,
+								NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType,NullType>
+								(NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType(),NullType());
+	}
+	~TCall() { delete args; }
+	bool matchesArgs(const base_tuple &) { return true; }
+	void assignArgs(base_tuple &) {}
+	TCall<void> &After(Call &call) {
+		previousCalls.push_back(&call);
+		return *this;
+	}
+	template <typename T>
+	TCall<void> &Do(T function) { functor = new DoWrapper<T,void>(function); return *this; }
+#ifndef HM_NO_EXCEPTIONS
+	template <typename Ex>
+	Call &Throw(Ex exception) { eHolder = new ExceptionWrapper<Ex>(exception); return *this; }
+#endif
+};
+#else
 template <typename Y,
 		  typename A = NullType, typename B = NullType, typename C = NullType, typename D = NullType,
 		  typename E = NullType, typename F = NullType, typename G = NullType, typename H = NullType,
@@ -3208,6 +4129,7 @@ public:
 	Call &Throw(Ex exception) { eHolder = new ExceptionWrapper<Ex>(exception); return *this; }
 #endif
 };
+#endif
 
 inline
 bool satisfied( std::list<Call *> const& previousCalls )
@@ -3329,6 +4251,10 @@ public:
 	TCall<void> &RegisterExpectDestructor(Z2 *mck, RegistrationType expect, const char *fileName, unsigned long lineNo);
 
 #ifdef _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+    template <int X, typename Y, typename... Args>
+	TCall<Y, Args...> &RegisterExpect_(Y (*func)(Args...), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo);
+#else
 	template <int X, typename Y>
 	TCall<Y> &RegisterExpect_(Y (*func)(), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo);
 	template <int X, typename Y, typename A>
@@ -3402,6 +4328,7 @@ public:
 			  typename I, typename J, typename K, typename L,
 			  typename M, typename N, typename O, typename P>
 	TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &RegisterExpect_(Y (*func)(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo);
+#endif
 
 #if defined(_MSC_VER) && !defined(_WIN64)
 	template <int X, typename Y>
@@ -3480,6 +4407,10 @@ public:
 #endif
 #endif
 
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+	template <int X, typename Z2, typename Y, typename Z, typename... Args>
+	TCall<Y,Args...> &RegisterExpect_(Z2 *mck, Y (Z::*func)(Args...), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo);
+#else
 	template <int X, typename Z2, typename Y, typename Z>
 	TCall<Y> &RegisterExpect_(Z2 *mck, Y (Z::*func)(), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo);
 	template <int X, typename Z2, typename Y, typename Z, typename A>
@@ -3553,9 +4484,20 @@ public:
 			  typename I, typename J, typename K, typename L,
 			  typename M, typename N, typename O, typename P>
 	TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &RegisterExpect_(Z2 *mck, Y (Z::*func)(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo);
+#endif
 
 	//GCC 3.x doesn't seem to understand overloading on const or non-const member function. Volatile appears to work though.
 #if !defined(__GNUC__) || __GNUC__ > 3
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+	template <int X, typename Z2, typename Y, typename Z, typename... Args>
+	TCall<Y,Args...> &RegisterExpect_(Z2 *mck, Y (Z::*func)(Args...) volatile, RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo) { return RegisterExpect_<X>(mck, (Y(Z::*)(Args...))(func), expect, functionName ,fileName, lineNo); }
+
+	template <int X, typename Z2, typename Y, typename Z, typename... Args>
+	TCall<Y,Args...> &RegisterExpect_(Z2 *mck, Y (Z::*func)(Args...) const volatile, RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo) { return RegisterExpect_<X>(mck, (Y(Z::*)(Args...))(func), expect, functionName ,fileName, lineNo); }
+
+	template <int X, typename Z2, typename Y, typename Z, typename... Args>
+	TCall<Y,Args...> &RegisterExpect_(Z2 *mck, Y (Z::*func)(Args...) const, RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo) { return RegisterExpect_<X>(mck, (Y(Z::*)(Args...))(func), expect, functionName ,fileName, lineNo); }
+#else
 	template <int X, typename Z2, typename Y, typename Z>
 	TCall<Y> &RegisterExpect_(Z2 *mck, Y (Z::*func)() volatile, RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo) { return RegisterExpect_<X>(mck, (Y(Z::*)())(func), expect, functionName ,fileName, lineNo); }
 	template <int X, typename Z2, typename Y, typename Z, typename A>
@@ -4080,6 +5022,7 @@ public:
 			  typename M, typename N, typename O, typename P>
 	TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &RegisterExpect_(Z2 *mck, Y (__stdcall Z::*func)(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P) const, RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo) { return RegisterExpect_<X>(mck, (Y(__stdcall Z::*)(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P))(func), expect, functionName ,fileName, lineNo); }
 #endif
+#endif
 
 
 	template <typename Z>
@@ -4396,6 +5339,23 @@ class mockFuncs : public mock<Z> {
 private:
 	mockFuncs();
 public:
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+	template <int X, typename... Args>
+	Y expectation(Args... args)
+	{
+		mock<Z> *realMock = mock<Z>::getRealThis();
+		if (realMock->isZombie)
+			RAISEEXCEPTION(ZombieMockException(realMock->repo));
+		MockRepository *myRepo = realMock->repo;
+		return myRepo->template DoExpectation<Y>(realMock, realMock->translateX(X), ref_tuple<Args...>(args...));
+	}
+
+	template <int X, typename... Args>
+	static Y static_expectation(Args... args)
+	{
+		return MockRepoInstanceHolder<0>::instance->template DoExpectation<Y>(NULL, std::pair<int, int>(0, X), ref_tuple<Args...>(args...));
+	}
+#else
 	template <int X>
 	Y expectation0()
 	{
@@ -4635,6 +5595,7 @@ public:
 	{
 		return MockRepoInstanceHolder<0>::instance->template DoExpectation<Y>(NULL, std::pair<int, int>(0, X), ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p));
 	}
+#endif
 
 #ifdef _MSC_VER
 	template <int X>
@@ -4834,6 +5795,23 @@ class mockFuncs<Z, void> : public mock<Z> {
 private:
 		mockFuncs();
 public:
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+	template <int X, typename... Args>
+	void expectation(Args... args)
+	{
+		mock<Z> *realMock = mock<Z>::getRealThis();
+		if (realMock->isZombie)
+			RAISEEXCEPTION(ZombieMockException(realMock->repo));
+		MockRepository *myRepo = realMock->repo;
+		myRepo->DoVoidExpectation(realMock, realMock->translateX(X), ref_tuple<Args...>(args...));
+	}
+
+	template <int X, typename... Args>
+	static void static_expectation(Args... args)
+	{
+		MockRepoInstanceHolder<0>::instance->DoVoidExpectation(NULL, std::pair<int, int>(0, X), ref_tuple<Args...>(args...));
+	}
+#else
 	template <int X>
 	void expectation0()
 	{
@@ -5072,6 +6050,7 @@ public:
 	{
 		MockRepoInstanceHolder<0>::instance->DoVoidExpectation(NULL, std::pair<int, int>(0, X), ref_tuple<A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P>(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p));
 	}
+#endif
 
 #ifdef _MSC_VER
 	template <int X>
@@ -5278,7 +6257,7 @@ void mock<T>::mockedDestructor(int)
 template <typename Z>
 void MockRepository::BasicRegisterExpect(mock<Z> *zMock, int baseOffset, int funcIndex, void (base_mock::*func)(), int X)
 {
-	if (funcIndex > VIRT_FUNC_LIMIT) RAISEEXCEPTION(NotImplementedException(this));
+	if (funcIndex > VIRT_FUNC_LIMIT) RAISEEXCEPTION(NotImplementedException(this, "exceed virtual function limit."));
 	if ((unsigned int)baseOffset * sizeof(void*) + sizeof(void*)-1 > sizeof(Z)) RAISEEXCEPTION(NotImplementedException(this));
 	if (zMock->funcMap.find(std::make_pair(baseOffset, funcIndex)) == zMock->funcMap.end())
 	{
@@ -5601,6 +6580,18 @@ TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &MockRepository::RegisterExpect_(Z2 *mc
 #endif
 
 #ifdef _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+template <int X, typename Y, typename... Args>
+TCall<Y,Args...> &MockRepository::RegisterExpect_(Y (*func)(Args...), RegistrationType expect, const char *funcName, const char *fileName, unsigned long lineNo)
+{
+  Y (*fp)(Args...);
+  fp = &mockFuncs<char, Y>::template static_expectation<X,Args...>;
+  int index = BasicStaticRegisterExpect(reinterpret_cast<void (*)()>(func), reinterpret_cast<void (*)()>(fp),X);
+  TCall<Y,Args...> *call = new TCall<Y,Args...>(expect, NULL, std::pair<int, int>(0, index), lineNo, funcName ,fileName);
+  addCall( call, expect );
+  return *call;
+}
+#else
 template <int X, typename Y>
 TCall<Y> &MockRepository::RegisterExpect_(Y (*func)(), RegistrationType expect, const char *funcName, const char *fileName, unsigned long lineNo)
 {
@@ -5811,6 +6802,7 @@ TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &MockRepository::RegisterExpect_(Y (*fu
   addCall( call, expect );
   return *call;
 }
+#endif
 
 #if defined(_MSC_VER) && !defined(_WIN64)
 template <int X, typename Y>
@@ -6026,6 +7018,21 @@ TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &MockRepository::RegisterExpect_(Y (__s
 #endif
 #endif
 
+#ifdef _HIPPOMOCKS__ENABLE_VARIADIC_TEMPLATES
+template <int X, typename Z2, typename Y, typename Z, typename... Args>
+TCall<Y,Args...> &MockRepository::RegisterExpect_(Z2 *mck, Y (Z::*func)(Args...), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo)
+{
+	std::pair<int, int> funcIndex = virtual_index((Y(Z2::*)(Args...))func);
+	Y (mockFuncs<Z2, Y>::*mfp)(Args...);
+	mfp = &mockFuncs<Z2, Y>::template expectation<X,Args...>;
+	BasicRegisterExpect(reinterpret_cast<mock<Z2> *>(mck),
+						funcIndex.first, funcIndex.second,
+						reinterpret_cast<void (base_mock::*)()>(mfp),X);
+	TCall<Y,Args...> *call = new TCall<Y,Args...>(expect, reinterpret_cast<base_mock *>(mck), funcIndex, lineNo, functionName ,fileName);
+	addCall( call, expect );
+	return *call;
+}
+#else
 template <int X, typename Z2, typename Y, typename Z>
 TCall<Y> &MockRepository::RegisterExpect_(Z2 *mck, Y (Z::*func)(), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo)
 {
@@ -6288,6 +7295,7 @@ TCall<Y,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P> &MockRepository::RegisterExpect_(Z2 *mc
 	addCall( call, expect );
 	return *call;
 }
+#endif
 
 template <typename Z>
 Z MockRepository::DoExpectation(base_mock *mock, std::pair<int, int> funcno, const base_tuple &tuple)
