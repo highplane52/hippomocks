@@ -196,6 +196,53 @@ assert(compute(0) == 1);
 
 ---
 
+### Non-virtual member function mocking
+
+Non-virtual member functions can be mocked by casting a member function pointer
+to a regular function pointer (with `this` as the first argument) and passing it
+to `ExpectCallFuncOverload`, `OnCallFuncOverload`, or `NeverCallFuncOverload`.
+
+Constraints:
+- **All instances are affected.** The mock replaces the function globally, so
+  `this` is ignored — all instances of the class return the mocked value.
+- **Not thread-safe.** Because the function is patched globally at the class
+  level, any other thread that calls the same function during the mock will
+  receive the mocked value. This includes the code under test if it spawns
+  threads internally, or test suites run in parallel (e.g. `--gtest_parallel`).
+- **Does not work with optimized builds.** With `-O2` or higher, the compiler
+  may inline the function, making it impossible for HippoMocks to patch it.
+  If mocking does not take effect, add `-fno-inline` to the compiler flags.
+  Note that `-fno-inline` cannot suppress functions marked with
+  `__attribute__((always_inline))`; such functions cannot be mocked.
+
+> **Note:** Mocking non-virtual member functions is **not officially supported**
+> by HippoMocks. The original author (dascandy) intentionally excluded this as a
+> design decision (see [Stack Overflow: HippoMocks: is it possible to mock non-virtual methods?](https://stackoverflow.com/questions/29675688/hippomocks-is-it-possible-to-mock-non-virtual-methods)).
+> This technique relies on casting a member function pointer to a regular
+> function pointer, which is undefined behavior in the C++ standard.
+> It works reliably on x86/ARM Linux with GCC/Clang in practice, but is not
+> portable across all compilers or platforms. Use at your own risk in test code.
+
+```cpp
+class MyClass {
+public:
+    int compute(int x);  // non-virtual
+};
+
+// Cast the member function pointer to a free function pointer
+// treating 'this' as the first argument.
+typedef int (*fn)(MyClass*, int);
+
+MockRepository mocks;
+mocks.ExpectCallFuncOverload((fn)&MyClass::compute).Return(99);
+
+MyClass obj;
+assert(obj.compute(0) == 99);
+// original implementation is restored when mocks goes out of scope
+```
+
+---
+
 ## Expectation modifiers
 
 ### With
