@@ -105,6 +105,13 @@ See [docs/usage.md](docs/usage.md) for examples.
 
 ## Running the tests
 
+Choose either make or CMake. Both build and run the same tests.
+make builds directly in `HippoMocksTest/`; CMake isolates build artifacts under `build/`.
+
+CMake was added later to support `cmake --install` (which copies `hippomocks.h` to the
+system `include/` directory) and to allow building on platforms where make is unavailable
+(e.g. generating a Visual Studio project on Windows).
+
 ### make
 
 ```sh
