@@ -217,19 +217,6 @@ foo->calc(99);  // throws ExpectationException — argument mismatch
 | `In(var)` | Capture the argument value into `var` |
 | `_` | Match any value (wildcard) |
 
-### Do
-
-Runs a lambda or functor when the method is called. Can be combined with `Return`.
-
-```cpp
-MockRepository mocks;
-IFoo *foo = mocks.Mock<IFoo>();
-mocks.ExpectCall(foo, IFoo::log).Do([](const char *msg) {
-    printf("logged: %s\n", msg);
-});
-foo->log("hello");  // prints "logged: hello"
-```
-
 #### Out — write to a reference/pointer argument
 
 `Out(value)` fills in a reference or pointer argument when the method is called.
@@ -276,6 +263,19 @@ Use `_` to match any value for a specific argument position.
 MockRepository mocks;
 IFoo *foo = mocks.Mock<IFoo>();
 mocks.OnCall(foo, IFoo::calc).With(42, _).Return(1);  // matches calc(42, <anything>)
+```
+
+### Do
+
+Runs a lambda or functor when the method is called. Can be combined with `Return`.
+
+```cpp
+MockRepository mocks;
+IFoo *foo = mocks.Mock<IFoo>();
+mocks.ExpectCall(foo, IFoo::log).Do([](const char *msg) {
+    printf("logged: %s\n", msg);
+});
+foo->log("hello");  // prints "logged: hello"
 ```
 
 ### Match — custom argument predicate
