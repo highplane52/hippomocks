@@ -214,6 +214,15 @@ Constraints:
   If mocking does not take effect, add `-fno-inline` to the compiler flags.
   Note that `-fno-inline` cannot suppress functions marked with
   `__attribute__((always_inline))`; such functions cannot be mocked.
+- **Major performance impact.** This technique patches the function's machine
+  code in memory at runtime (self-modifying code). The CPU must flush its
+  instruction cache and pipeline every time the patch is applied or removed,
+  which is very expensive. Because the patch is global, switching between mocked
+  and unmocked per instance is not possible — the function must be patched and
+  restored for each test, multiplying this cost. On architectures with deep
+  pipelines (e.g. Pentium 4), the original author measured slowdowns exceeding
+  100× for code heavily exercising this pattern
+  (see [dascandy/hippomocks#24](https://github.com/dascandy/hippomocks/issues/24)).
 
 > **Note:** Mocking non-virtual member functions is **not officially supported**
 > by HippoMocks. The original author (dascandy) intentionally excluded this as a
