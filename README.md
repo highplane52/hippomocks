@@ -76,9 +76,18 @@ Set up expectations and stubs on mock objects created via `MockRepository::Mock<
 | `OnCall(obj, func)` | member function | any (≥ 0) | Stub the method with no call count requirement |
 | `OnCalls(obj, func, min)` | member function | ≥ min | Stub the method, requiring at least min calls |
 | `NeverCall(obj, func)` | member function | must be 0 | Assert the method is never called |
-| `ExpectCallFunc(func)` | free function / static member function | exactly 1 | Expect the function to be called once |
-| `OnCallFunc(func)` | free function / static member function | any (≥ 0) | Stub the function with no call count requirement |
-| `NeverCallFunc(func)` | free function / static member function | must be 0 | Assert the function is never called |
+| `ExpectCallOverload(obj, func)` | overloaded member function | exactly 1 | Like `ExpectCall` but with an explicit cast to resolve the overload |
+| `OnCallOverload(obj, func)` | overloaded member function | any (≥ 0) | Like `OnCall` but with an explicit cast to resolve the overload |
+| `NeverCallOverload(obj, func)` | overloaded member function | must be 0 | Like `NeverCall` but with an explicit cast to resolve the overload |
+| `ExpectCallDestructor(obj)` | destructor | exactly 1 | Expect the mock object's destructor to be called once |
+| `OnCallDestructor(obj)` | destructor | any (≥ 0) | Stub the mock object's destructor with no call count requirement |
+| `NeverCallDestructor(obj)` | destructor | must be 0 | Assert the mock object's destructor is never called |
+| `ExpectCallFunc(func)` | free / static member function | exactly 1 | Expect the function to be called once |
+| `OnCallFunc(func)` | free / static member function | any (≥ 0) | Stub the function with no call count requirement |
+| `NeverCallFunc(func)` | free / static member function | must be 0 | Assert the function is never called |
+| `ExpectCallFuncOverload(func)` | overloaded free / static member function | exactly 1 | Like `ExpectCallFunc` but with an explicit cast to resolve the overload |
+| `OnCallFuncOverload(func)` | overloaded free / static member function | any (≥ 0) | Like `OnCallFunc` but with an explicit cast to resolve the overload |
+| `NeverCallFuncOverload(func)` | overloaded free / static member function | must be 0 | Like `NeverCallFunc` but with an explicit cast to resolve the overload |
 
 ### Expectation modifiers
 
@@ -92,6 +101,7 @@ Chain these after any mocking macro to refine the expectation.
 | `.Do(func)` | Run a lambda or functor when the method is called |
 | `.Match(pred)` | Select a stub by a custom boolean predicate on the arguments |
 | `.After(call)` | Activate this expectation only after another call has occurred |
+| `.Throw(exception)` | Throw the given exception when the method is called (unavailable when `HM_NO_EXCEPTIONS` is defined) |
 
 `With` accepts the following argument wrappers:
 

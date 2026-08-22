@@ -396,3 +396,26 @@ foo->log("b");
 assert(c.count == 2);
 ```
 
+
+### Throw — throw an exception when called
+
+`.Throw(exception)` causes the method to throw the given exception when called.
+Not available when `HM_NO_EXCEPTIONS` is defined.
+
+```cpp
+class IFoo {
+public:
+    virtual int calc(int x) = 0;
+};
+
+MockRepository mocks;
+IFoo *foo = mocks.Mock<IFoo>();
+mocks.ExpectCall(foo, IFoo::calc).Throw(std::runtime_error("oops"));
+
+try {
+    foo->calc(1);
+} catch (const std::runtime_error &e) {
+    assert(std::string(e.what()) == "oops");
+}
+```
+
